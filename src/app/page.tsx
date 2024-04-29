@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { TodoObject } from "./models/Todo";
 import {v4 as uuid} from 'uuid'
+import { FaGithub } from "react-icons/fa";
 
 
 const Home: React.FC =() => {
@@ -19,9 +20,15 @@ const Home: React.FC =() => {
 
   return (
     <>
-      <header className="bg-[#6fddfb] p-4">
+    <div className="flex justify-between bg-[#6fddfb]">
+      <header className=" p-4">
         <h1 className="text-3xl font-bold">Todos</h1>
       </header>
+      <a href="https://github.com/AsadAbbas78" className="p-4 text-2xl">
+
+      <FaGithub />
+      </a>
+      </div>
       <main className="p-4">
 
         <input 
@@ -31,7 +38,7 @@ const Home: React.FC =() => {
           onChange={(e)=> setTodo (e.target.value)}
           value={todo}
         />
-        <button className="border-2 p-2 rounded" onClick={() => addTodo()}>Add Todo</button>
+        <button className=" p-2 rounded bg-[#6fddfb] border-2 border-[#6fddfb] hover:bg-transparent hover:text-[#6fddfb]" onClick={() => addTodo()}>Add Todo</button>
         
         <ul className="mt-5">
           { 
