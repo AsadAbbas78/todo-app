@@ -5,52 +5,49 @@ import {v4 as uuid} from 'uuid'
 
 
 const Home: React.FC =() => {
-const [todo, setTodo]= useState<string>('')
-const [todos,setTodos]= useState<TodoObject[]>([])
-const addTodo = () =>{
-setTodos([{id: uuid(), value:todo,done:false},...todos])
-setTodo("");
-}
-const markTodoDone = (id :string) =>{
-setTodos(todos.map(todo => todo.id ===id ? {...todo, done:!todo.done}:todo));
+  const [todo, setTodo]= useState<string>('')
+  const [todos,setTodos]= useState<TodoObject[]>([])
+  
+  const addTodo = () =>{
+    setTodos([{id: uuid(), value:todo,done:false},...todos])
+    setTodo("");
+  }
 
-}
+  const markTodoDone = (id :string) =>{
+    setTodos(todos.map(todo => todo.id ===id ? {...todo, done:!todo.done}:todo));
+  }
+
   return (
     <>
-    <header className="bg-[#6fddfb] p-4">
-      <h1 className="text-3xl font-bold">Todos</h1>
-    </header>
-<main className="p-4">
+      <header className="bg-[#6fddfb] p-4">
+        <h1 className="text-3xl font-bold">Todos</h1>
+      </header>
+      <main className="p-4">
 
-  <input 
-  type="text"
-  placeholder="Add Todo"
-className="p-2 rounded mr-5 text-black"
-onChange={(e)=> setTodo (e.target.value)}
-value={todo}
-  />
-  <button className="border-2 p-2 rounded"
-  onClick={() => addTodo()}
-  
-  >Add Todo</button>
-  <ul className="mt-5">
-    { 
-    todos.map( todo =>(
-<li 
-onClick={() => markTodoDone()}
-className={'text-3xl ml-5 cursor-pointer'}> 
-{todo.value}
-
-</li>
-
-    ))
-    
-    }
-    
-  </ul>
-</main>
-
+        <input 
+          type="text"
+          placeholder="Add Todo"
+          className="p-2 rounded mr-5 text-black"
+          onChange={(e)=> setTodo (e.target.value)}
+          value={todo}
+        />
+        <button className="border-2 p-2 rounded" onClick={() => addTodo()}>Add Todo</button>
+        
+        <ul className="mt-5">
+          { 
+            todos.map( todo =>(
+              <li 
+                key={todo.id}
+                onClick={() => markTodoDone(todo.id)}
+                className="text-3xl .ml-2 cursor-pointer"> 
+                {todo.value}
+              </li>
+            ))
+          }
+        </ul>
+      </main>
     </>
   );
 }
+
 export default Home;
