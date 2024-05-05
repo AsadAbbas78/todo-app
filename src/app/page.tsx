@@ -34,7 +34,7 @@ const Home: React.FC =() => {
         <input 
           type="text"
           placeholder="Add Todo"
-          className="p-2 rounded mr-5 text-black"
+          className="p-2 rounded mr-5 text-white"
           onChange={(e)=> setTodo (e.target.value)}
           value={todo}
         />
