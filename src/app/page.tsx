@@ -34,7 +34,7 @@ const Home: React.FC =() => {
         <input 
           type="text"
           placeholder="Add Todo"
-          className="p-2 rounded mr-5 text-white"
+          className="p-2 rounded mr-5 text-black"
           onChange={(e)=> setTodo (e.target.value)}
           value={todo}
         />
@@ -46,7 +46,7 @@ const Home: React.FC =() => {
               <li 
                 key={todo.id}
                 onClick={() => markTodoDone(todo.id)}
-                className="text-3xl .ml-2 cursor-pointer"> 
+                className="text-3xl .ml-2 cursor-pointer text-white"> 
                 {todo.value}
               </li>
             ))
